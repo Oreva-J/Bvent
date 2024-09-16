@@ -1,0 +1,19 @@
+{
+  "name": "bvent",
+  "version": "1.0.0",
+  "description": "inventory systerm",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon"
+  },
+  "author": "Oreva",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "mongoose": "^8.6.2",
+    "nodemon": "^3.1.4"
+  }
+}
