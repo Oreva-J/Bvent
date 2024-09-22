@@ -3,7 +3,9 @@ const User = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const Token = require('../models/tokenModel');
-const crypto = require('crypto')
+const crypto = require('crypto');
+//const sendEmail = require('../utils/sendEmail');
+
 
 
 const generateToken = (id) => {
@@ -193,7 +195,6 @@ const loginStatus = asyncHandler(async (req, res) => {
     });
 
     // Change Password
-
     const changePassword = asyncHandler(async (req, res) => {
         const user = await User.findById(req.user._id)
         const {oldPassword, password} = req.body
@@ -203,7 +204,7 @@ const loginStatus = asyncHandler(async (req, res) => {
             res.status(400);
             throw new Error("User not found, Please signup");
         }
-        // Check f password is entered
+        // Check if password is entered
         if(!oldPassword || !password){
             res.status(400);
             throw new Error("Please add old and new Password");
@@ -273,7 +274,7 @@ const loginStatus = asyncHandler(async (req, res) => {
 
         const subject = "Password Reset Request"
         const send_to = user.email
-        const_from = process.env.EMAIL_USER
+        const sent_from = process.env.EMAIL_USER
 
         try {
             await sendEmail(subject, message, send_to, sent_from)
